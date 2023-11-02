@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #bbb0b8;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.calendario_container {
+  margin: 65px 150px 20px 150px;
+}
+
+.p-card .p-card-content {
+  padding: 0 0;
+}
+
+/* pagina reservas */
+
+.titulo {
+  text-align: center;
+  color: #ffffff;
+}
+
+
+.p-card {
+  background-color: #ffffff;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.grid-container2 {
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  grid-gap: 20px;
+}
+
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* margin: 35px 0px 0px 35px; */
+  grid-gap: 10px;
+}
+
+.grid-container3 {
+  display: flex;
+  gap: 1rem;
+}
+
+.card-image {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.card-content {
+  display: flex;
+  font-size: 12px;
+}
+
+
+.nueva-reserva-button {
+  font-size: 2rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+.nueva-reserva-button:hover {
+  background-color: #16A34A; /* Cambia el color del botón en el hover */
+  border-color: #16A34A; ;
+}
+
+.start-content {
+  display: flex;
+  font-size: 14px;
+  background-color:  #ffffff;
+  padding: 25px 20px 25px 20px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.p-toolbar {
+  background: #00000000;
+  border: none;
+  padding: 20px 20px 0px 50px;
+}
+
+.Toolbar {
+  background: #00000000;
+}
+
+
+/* pagina Salones */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 35px 0px 0px 35px;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+}
+
+.calendario-fondo {
+  padding: 50px 50px 50px 50px;
+  border-radius: 15px;
+  background-color:white ;
+}
+
+
+
+
+
+
+
+
+
+
+
+

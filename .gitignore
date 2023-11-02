@@ -1,0 +1,36 @@
+# Archivos y directorios locales
+.env
+node_modules
+.venv
+venv
+
+# Proyectos Java
+target/
+build/
+
+# Proyectos C/C++
+bin/
+obj/
+
+# Archivos de distribución
+dist/
+out/
+
+# Archivos de compilación
+*.class
+*.jar
+*.war
+*.exe
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Archivos generados por IDEs
+.idea/
+.vscode/
+.project
+.classpath
+
+# Archivos de datos grandes
+# <nombre_del_archivo_o_directorio>
