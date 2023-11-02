@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import { Toolbar } from 'primereact/toolbar';
 import { Toast } from 'primereact/toast';
-import { Tooltip } from 'primereact/tooltip';
+// import { Tooltip } from 'primereact/tooltip';
 
 // import { SplitButton } from 'primereact/splitbutton';
 //import { useRouter } from 'next/router';
@@ -196,12 +196,16 @@ export default function Reservas() {
         setDeleteReservaDialog(false);
     };
 
+    // const handleButtonEditar = (id) => {
+    //     EditarReserva(id)
+    //     setDialog(true)
+    // }
 
 
     const onInputChange = (event) => {
         const val = event.value;
         // console.log(val);
-        if (!val == '') {
+        if (!val === '') {
 
             setNuevaReserva(prevPedido => ({
                 ...prevPedido,
@@ -259,7 +263,7 @@ export default function Reservas() {
         const fechaInicioDate = new Date(filtroFechaInicio);
         const fechaFinDate = new Date(filtroFechaFin);
         const tarjetaFechaInicio = new Date(datos.fechaInicio);
-        const tarjetaFechaFin = new Date(datos.fechaFin);
+        // const tarjetaFechaFin = new Date(datos.fechaFin);
 
         // Verificar si la fecha de inicio de la tarjeta está dentro del rango seleccionado
         const dentroDelRango = tarjetaFechaInicio >= fechaInicioDate && tarjetaFechaInicio <= fechaFinDate;

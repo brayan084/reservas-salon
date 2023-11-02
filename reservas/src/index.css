@@ -49,7 +49,7 @@ code {
 }
 
 .card-image {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: 2rem;
@@ -70,14 +70,16 @@ code {
 }
 
 .nueva-reserva-button:hover {
-  background-color: #16A34A; /* Cambia el color del botón en el hover */
-  border-color: #16A34A; ;
+  background-color: #16A34A;
+  /* Cambia el color del botón en el hover */
+  border-color: #16A34A;
+  ;
 }
 
 .start-content {
   display: flex;
   font-size: 14px;
-  background-color:  #ffffff;
+  background-color: #ffffff;
   padding: 25px 20px 25px 20px;
   border: none;
   border-radius: 15px;
@@ -119,7 +121,7 @@ code {
 .calendario-fondo {
   padding: 50px 50px 50px 50px;
   border-radius: 15px;
-  background-color:white ;
+  background-color: white;
 }
 
 .calendario_container {
@@ -127,13 +129,34 @@ code {
 }
 
 
+/* pagina de usuario */
 
+.grid-container-user {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Cambia el tamaño de las columnas según tus necesidades */
+  gap: 20px; /* Espacio entre las columnas */
+}
 
+.User_container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  font-size: 13px;
+  margin: 35px 0px 0px 35px;
+  flex-direction: column;
+  padding: 25px 20px 25px 20px;
+  border-radius: 15px;
 
+  background-color: #ffffff;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
 
-
-
-
-
-
-
+.User_image {
+  display: flex;
+  width: auto;
+}
+.reservas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px
+}
