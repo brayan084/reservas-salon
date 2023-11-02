@@ -13,10 +13,6 @@ code {
     monospace;
 }
 
-.calendario_container {
-  margin: 65px 150px 20px 150px;
-}
-
 .p-card .p-card-content {
   padding: 0 0;
 }
@@ -124,6 +120,10 @@ code {
   padding: 50px 50px 50px 50px;
   border-radius: 15px;
   background-color:white ;
+}
+
+.calendario_container {
+  margin: 40px 150px 20px 150px;
 }
 
 

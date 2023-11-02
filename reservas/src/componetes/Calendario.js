@@ -1,48 +1,81 @@
-import React, { useState, useEffect } from 'react'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import React from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import esLocale from '@fullcalendar/core/locales/es';
+import { Button } from 'primereact/button';
+import '../App.css';
 
 import axios from 'axios';
 
-export default function Calendario() {
+export default class Calendario extends React.Component {
 
-  const [data, setData] = useState([]);
+  constructor(props) {
+    super(props);
+    this.calendarRef = React.createRef();
+    this.state = {
+      data: []
+    };
+  }
 
-  console.log(data)
-  // console.log(data[0].fechaInicio)
-  // console.log(data[0].fechaFin)
+  componentDidMount() {
+    this.getData();
+  }
 
-  useEffect(() => {
-    getData();
-  }, [])
-
-  const getData = async () => {
+  getData = async () => {
     try {
       const response = await axios.get('http://localhost:3001/Reservas');
-      // console.log(response.data);
-      setData(response.data._Reservas);
-
+      this.setState({ data: response.data._Reservas });
     } catch (error) {
       console.log(error);
     }
   }
 
-  return (
-    <div className='calendario_container'>
-      <div className='calendario-fondo'>
+  handleMonthView = () => {
+    this.calendarRef.current.getApi().changeView('dayGridMonth');
+  };
 
-        <FullCalendar
-          plugins={[dayGridPlugin]}
-          initialView="dayGridMonth"
-          height="600px"
-          events={data.map(reserva => ({
-            title: reserva.nombre + ' - ' + reserva.salon , // Reemplaza "reserva.titulo" con la propiedad de tus reservas que representa el título del evento
-            start: reserva.fechaInicio.split('T')[0], // Reemplaza "reserva.fechaInicio" con la propiedad de tus reservas que representa la fecha de inicio del evento
-            end: reserva.fechaFin.split('T')[0], // Agrega esta línea y reemplaza "reserva.fechaFin" con la propiedad de tus reservas que representa la fecha de finalización del evento
+  handleWeekView = () => {
+    this.calendarRef.current.getApi().changeView('timeGridWeek');
+  };
 
-          }))}
-        />
+  handleDayView = () => {
+    this.calendarRef.current.getApi().changeView('timeGridDay');
+  };
+
+
+
+  render() {
+    const { data } = this.state;
+
+    return (
+      <div className='calendario_container'>
+        <div className='calendario-fondo'>
+          <div className='flex justify-content-center'>
+            <Button onClick={this.handleMonthView} severity='secondary' label='Mes' text/>
+            <Button onClick={this.handleWeekView} severity='secondary' label='Semana' text/>
+            <Button onClick={this.handleDayView} severity='secondary' label='Dia' text/>
+          </div>
+          <FullCalendar
+            ref={this.calendarRef}
+            defaultView="dayGridMonth"
+            plugins={[dayGridPlugin, timeGridPlugin]}
+            height='650px'
+            events={data.map(reserva => ({
+              title: reserva.nombre + ' - ' + reserva.salon, 
+              start: reserva.fechaInicio,
+              end: reserva.fechaFin, 
+
+            }))}
+            locale={esLocale}
+          />
+
+        </div>
+
       </div>
-    </div>
-  )
+    )
+  }
 }
+
+
+

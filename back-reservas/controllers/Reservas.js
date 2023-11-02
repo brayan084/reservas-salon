@@ -114,39 +114,64 @@ const crearReserva = async (req, res = response) => {
 
 
 const actualizarReserva = async (req, res = response) => {
-
-    const id = req.params.id;
-    const { salon, fechaInicio, fechaFin } = req.body;
-
-
     try {
-        const _Reserva = await Reservas.findByPk(id);
-
-        if (!_Reserva) {
-            return res.status(201).json({
-                ok: false,
-                message: 'Reserva no encontrada'
-            })
+      const { id } = req.params;
+      const reservaExistente = await Reservas.findOne({
+        where: {
+          id: id
         }
-
-
-        _Reserva.salon = salon;
-        _Reserva.fechaInicio = fechaInicio;
-        _Reserva.fechaFin = fechaFin;
-
-
-
-        await _Reserva.save();
-        res.json(_Reserva);
-
+      });
+    
+      if (!reservaExistente) {
+        return res.status(404).json({
+          msg: 'No se encontró la reserva'
+        });
+      }
+  
+      const reservas = await Reservas.findAll();
+      console.log(reservas);
+  
+      const reservaSolapada = reservas.find((reserva) => {
+        if (reserva.id === id) {
+          return false; // Ignorar la reserva actual al comparar con las demás reservas
+        }
+  
+        const fechaInicioExistente = moment(reserva.fechaInicio)
+        const fechaFinExistente = moment(reserva.fechaFin).add(1, 'hour');
+  
+        const fechaInicioNueva = moment(req.body.fechaInicio);
+        const fechaFinNueva = moment(req.body.fechaFin);
+  
+        return (
+          fechaInicioNueva.isSameOrBefore(fechaFinExistente) &&
+          fechaFinNueva.isSameOrAfter(fechaInicioExistente) &&
+          reserva.salon === req.body.salon
+        );
+      });
+  
+      if (reservaSolapada) {
+        return res.status(400).json({
+          msg: 'La reserva se solapa con otra reserva existente'
+        });
+      }
+  
+      // Actualizar la reserva existente con los nuevos datos de req.body
+      reservaExistente.fechaInicio = req.body.fechaInicio;
+      reservaExistente.fechaFin = req.body.fechaFin;
+      // Actualizar otros campos según sea necesario
+  
+      await reservaExistente.save();
+  
+      res.json({
+        msg: 'Reserva actualizada exitosamente'
+      });
     } catch (error) {
-        console.log(error);
-        res.status(404).json({
-            msg: 'Error al actualizar la reserva'
-        })
+      console.log(error);
+      res.status(500).json({
+        msg: 'Error al actualizar la reserva'
+      });
     }
-
-}
+  };
 
 const eliminarReserva = async (req, res = response) => {
 
