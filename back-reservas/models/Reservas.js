@@ -28,10 +28,10 @@ const Reservas = dbConnection.define('reservas', {
     timestamps: false
 });
 
-Reservas.sync({alter: true}).then(() => {
-    console.log('Reservas table created');
-}).catch((error) => {
-    console.log('Hubo un error en crear la tabla',error);
-})
+// Reservas.sync({alter: true}).then(() => {
+//     console.log('Reservas table created');
+// }).catch((error) => {
+//     console.log('Hubo un error en crear la tabla',error);
+// })
 
 module.exports = Reservas;

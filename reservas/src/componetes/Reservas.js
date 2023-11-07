@@ -173,7 +173,7 @@ export default function Reservas() {
 
         try {
             const response = await axios.get(`http://localhost:3001/Reservas/${id}`);
-            // toast.current.show({ severity: 'success', summary: 'Success', detail: 'Reserva editada', life: 2000 });
+            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Reserva editada', life: 2000 });
             // console.log(response.data.fechaInicio);
 
             const _fechaInicio = new Date(response.data.fechaInicio);
@@ -205,7 +205,7 @@ export default function Reservas() {
     const onInputChange = (event) => {
         const val = event.value;
         // console.log(val);
-        if (!val === '') {
+        if (!val == '') {
 
             setNuevaReserva(prevPedido => ({
                 ...prevPedido,
@@ -213,7 +213,7 @@ export default function Reservas() {
             }))
         } else {
             console.log('no hay nada')
-        }
+        }  
     };
 
     const handleChangeFechaInicio = (event) => {

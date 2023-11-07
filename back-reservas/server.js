@@ -7,6 +7,9 @@ const app = express();
 /* Configurar CORS */
 app.use(cors());
 
+/* Es el archivo encargado de enviar recordatorios de las reservas */
+require('./mailer');
+
 /* Lectura y parseo del body */
 app.use(express.json());
 
