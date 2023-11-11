@@ -4,6 +4,7 @@ import { Divider } from 'primereact/divider';
 import axios from 'axios';
 
 import { Card } from 'primereact/card';
+import HistorialReservas from './HistorialReservas';
 
 export default function UsuarioConfig() {
 
@@ -74,7 +75,7 @@ export default function UsuarioConfig() {
                 <div className='card User_container'>
 
                     <div className='User_image'>
-                        <Image src={usuario.photoURL} alt="Image" width="175" preview />
+                        <Image src={usuario.photoURL} alt="Image" width="155" preview />
                     </div>
                     <Divider />
                     <p className="">
@@ -96,31 +97,7 @@ export default function UsuarioConfig() {
                 </div>
             </div>
             <div >
-                <h1>Historial de reservas</h1>
-                <div className='reservas'>
-                    {data
-                        .filter((datos) => datos.nombre.includes(`${usuario.displayName}`))
-                        .map((datos, index) => (
-                            <div key={index} className="card ">
-                                <Card className="md:w-22rem md:h-20rem grid-container3 ">
-                                    <div className="card-content">
-                                        <div className="card-image">
-                                            <img alt="Foto del usuario" src={datos.foto} />
-                                        </div>
-                                        <div className='card-body'>
-                                            <h2>NOMBRE: {datos.nombre}</h2>
-                                            <h2>SALON: {datos.salon}</h2>
-                                            <h2>FECHA: {fechaInicioBodyTemplate(datos)} - {fechaFinBodyTemplate(datos)}</h2>
-                                            <h2>DESDE: {horaDesdeBodyTemplate(datos)} hs. </h2>
-                                            <h2>HASTA: {horaHastaBodyTemplate(datos)} hs. </h2>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </div>
-                        ))
-                    }
-
-                </div>
+                <HistorialReservas />
             </div>
 
 
